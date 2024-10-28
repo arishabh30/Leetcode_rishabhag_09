@@ -12,16 +12,16 @@ public:
     int maxProfit(vector<int>& prices) {
 
         int profit = 0;
-        int maxProfit =0;
+        int maxProfit = 0;
         int minVal = prices[0];
 
         for(int i=1;i<prices.size();i++){
             profit = prices[i] - minVal;
             maxProfit = max(profit, maxProfit);
             minVal = min(minVal, prices[i]);
-        }
+        }     
 
-        return maxProfit;        
+        return profit;
     }
 };
 // @lc code=end
