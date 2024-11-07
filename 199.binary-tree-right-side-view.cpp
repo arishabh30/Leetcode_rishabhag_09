@@ -17,28 +17,47 @@
  * };
  */
 class Solution {
+private:
+    void dfs(TreeNode* root, int level, vector<int>& ans){
+        if(root==NULL) return;
+
+        if(ans.size() == level) ans.push_back(root->val);
+
+        dfs(root->right, level+1, ans);
+        dfs(root->left, level+1, ans);
+    }
 public:
     vector<int> rightSideView(TreeNode* root) {
+
+        // bfs approach
         
+        // vector<int> ans;
+
+        // if(root==NULL) return {};
+        // queue<TreeNode*> q;
+        // q.push(root);
+
+        // while(!q.empty()){
+            
+        //     int size = q.size();
+        //     for(int i =0; i<size; i++){
+        //         TreeNode* node = q.front();
+        //         q.pop();
+
+        //         if(i==size-1) ans.push_back(node->val);
+
+        //         if(node->left) q.push(node->left);
+        //         if(node->right) q.push(node->right);
+        //     }
+        // }
+
+        // return ans;
+
+        // DFS approach
+
         vector<int> ans;
 
-        if(root==NULL) return {};
-        queue<TreeNode*> q;
-        q.push(root);
-
-        while(!q.empty()){
-            
-            int size = q.size();
-            for(int i =0; i<size; i++){
-                TreeNode* node = q.front();
-                q.pop();
-
-                if(i==size-1) ans.push_back(node->val);
-
-                if(node->left) q.push(node->left);
-                if(node->right) q.push(node->right);
-            }
-        }
+        dfs(root, 0, ans);
 
         return ans;
     }
